@@ -26,7 +26,17 @@ gclient sync
 <5> create local branch
 cd src
 git reset --hard HEAD
+git pull
+git config branch.autosetupmerge always
+git config branch.autosetuprebase always
+git checkout master
+git new-branch uWebRTC
 ./build/install-build-deps.sh --no-chromeos-fonts
 gclient sync
+<6> Building
+gn clean out/Default
+gn gen out/Default
+ninja -C out/Default
+
 
 
